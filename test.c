@@ -15,12 +15,12 @@ char **_getopc(int fd)
 	l = (char **)malloc(sizeof(char **) * 3);
 	for (; i < size; opc[i] = 0, arg[i] = 0, i++)
 		;
-	for (l[0] = opc, l[1] = arg, i = 0; fl; i++)
+	for (l[0] = opc, l[1] = arg, l[2] = end, i = 0; fl; i++)
 	{
 		read(fd, &c, 1);
-		if (c == '\n' || c == EOF)
+		if (c == '\n' || c == EOF || c == 0)
 		{
-			if (c == EOF)
+			if (c == EOF || c == 0)
 				end[0] = '1';
 			return (l);
 		}
@@ -44,24 +44,45 @@ char **_getopc(int fd)
 }
 int main(int argc, char *argv[])
 {
-	char *fname = NULL;
 	int fd = 0;
+	unsigned int line = 0;
 	char **l = NULL;
+	char *fname = NULL;
+	char **global = NULL;
 
+	global = (char **)malloc(sizeof(char **) * 3);
 	fname = argv[1];
+	global[0] = fname;
 	fd = open(fname, O_RDONLY);
 	if (fd == -1)
 	{
 		printf("Error\n");
 		return (-1);
 	}
-	l = _getopc(fd);
+	while (1)
+	{
+		line++;
+		l = _getopc(fd);
+		global[1] = l[0];
+		global[2] = l[1];
+		printf("%s: ", global[0]);
+		printf("%s ", global[1]);
+		printf("%s\n", global[2]);
+		printf("lines: %i\n", line);
+		free(l[0]);
+		free(l[1]);
+		if (l[2][0] != '0')
+		{
+			free(l[2]);
+			free(l);
+			break;
+		}
+		free(l[2]);
+		free(l);
+	}
+	free(global);
+	printf("lines: %i\n", line);
 	close(fd);
-	printf("%s\n", l[0]);
-	printf("%s\n", l[1]);
-	free(l[0]);
-	free(l[1]);
-	free(l);
 	//clfy_opc(opc);
 	return (0);
 }
