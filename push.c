@@ -2,16 +2,14 @@
 /**
  * push - function that push an unteger to the stack
  * @stack: a double linked list
- * @line: number of line in code to print error message.
- * @num: integer to add.
- * Return: the stack with new element
+ * @line_number: number of line in code to print error message.
  */
-stack_t *push(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
-	int i = 0;
+	int i = 0, number;
 
-	for (; num[i] != '\0'; i++)
+	for (; global[1][i] != '\0'; i++)
 		if (isdigit(num[i] == 0))
 			break;
 	if (isdigit(num[i] == 0) || num == NULL)
@@ -19,10 +17,11 @@ stack_t *push(stack_t **stack, unsigned int line_number);
 		fprintf(stderr, "L%u: usage: push integer\n", line);
 		exit(EXIT_FAILURE);
 	}
+	number = atoi(global[1]);
 	new = malloc(stack_t);
 	if (new == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", filename);
+		fprintf(stderr, "Error: malloc failed");
 		exit(EXIT_FAILURE);
 	}
 	new->n = number;
