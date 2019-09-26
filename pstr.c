@@ -1,10 +1,10 @@
 #include "monty.h"
 /**
- * _pchar - function that print the first char on a stack
+ * pstr_t - function that prints the string on the stack
  * @stack: a double linked list
  * @line_number: number of line in code to print error message.
  */
-void _pchar(stack_t **stack, unsigned int line_number)
+void pstr_t(stack_t **stack, unsigned int line_number)
 {
 	stack_t *p;
 
@@ -14,11 +14,12 @@ void _pchar(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	if (p->n < 0 || p->n > 255)
+	while (p != NULL)
 	{
-		fprintf(stderr, "L%u: can't pchar, value out of range\n", line_number);
-		exit(EXIT_FAILURE);
+		if (p->n < 1 || p->n > 255)
+			break;
+		putchar(p->n);
+		p = p->prev;
 	}
-	putchar(p->n);
 	putchar('\n');
 }

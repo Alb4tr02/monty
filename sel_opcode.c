@@ -13,7 +13,7 @@ int sel_opcode(stack_t **stack, unsigned int line)
 		{ "pint", pint }, { "swap", swap },
 		{ "mul", mul }, { "div", div_m }, { "pchar", _pchar},
 		{ "mod", mod_m }, { "\n", nop }, { " ", nop },
-		{ "/t", nop }, { "pstr", pstr_t }, { NULL, NULL }
+		{ "/t", nop }, { "pstr", pstr_t}, { NULL, NULL }
 	};
 	int i = 0;
 
@@ -27,5 +27,5 @@ int sel_opcode(stack_t **stack, unsigned int line)
 			break;
 		}
 	}
-	return(0);
+	return (0);
 }

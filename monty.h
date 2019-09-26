@@ -38,6 +38,7 @@ typedef struct instruction_s
 } instruction_t;
 int sel_opcode(stack_t **stack, unsigned int line);
 char **global;
+char **_getopc(int fd);
 
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
@@ -52,6 +53,7 @@ void div_m(stack_t **stack, unsigned int line_number);
 void _pchar(stack_t **stack, unsigned int line_number);
 void mod_m(stack_t **stack, unsigned int line_number);
 void pstr_t(stack_t **stack, unsigned int line_number);
-
+int stack_len(stack_t **stack);
+void error_malloc(void);
 
 #endif

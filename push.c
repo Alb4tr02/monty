@@ -20,12 +20,10 @@ void push(stack_t **stack, unsigned int line_number)
 	number = atoi(global[2]);
 	new = malloc(sizeof(stack_t *));
 	if (new == NULL)
-	{
-		fprintf(stderr, "Error: malloc failed");
-		exit(EXIT_FAILURE);
-	}
+		error_malloc();
 	new->n = number;
-	new->next = NULL;
+	if (new)
+		new->next = NULL;
 	if (stack == NULL)
 		new->prev = NULL;
 	else
