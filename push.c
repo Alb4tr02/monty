@@ -12,7 +12,7 @@ void push(stack_t **stack, unsigned int line_number)
 	for (; global[2][i] != '\0'; i++)
 		if (isdigit(global[2][i] == 0))
 			break;
-	if (isdigit(global[2][i] == 0) || global[2] == NULL)
+	if (isdigit(global[2][i] == 0) || global[2][0] == 0)
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
