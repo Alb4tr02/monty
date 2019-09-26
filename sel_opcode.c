@@ -16,7 +16,7 @@ int *sel_opcode(stack_t **stack, unsigned int line)
 		{ "mod", mod_m }, { "\n", nop }, { " ", nop },
 		{ "/t", nop }, { "pstr", pstr_t }, { NULL, NULL }
 	};
-	int flag = 0, i = 0;
+	int i = 0;
 
 	if (stack == NULL || opcode == NULL)
 		return (0);
@@ -24,12 +24,9 @@ int *sel_opcode(stack_t **stack, unsigned int line)
 	{
 		if (strcmp(global, op[i].opcode) == 0)
 		{
-			flag = 1;
-			op_built[i].f(stack, line);
+			op[i].f(stack, line);
 			break;
 		}
 	}
-	if (flag == 0)
-		stderr_unknown(token, line_number);
 	return (0);
 }
