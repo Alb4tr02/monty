@@ -56,19 +56,14 @@ int main(int argc, char *argv[])
 	fd = open(fname, O_RDONLY);
 	if (fd == -1)
 	{
-		printf("Error\n");
-		return (-1);
+		fprintf(stderr, "Error: Can't open file %s\n", fname);
+		exit(EXIT_FAILURE);
 	}
 	while (1)
 	{
 		line++;
 		l = _getopc(fd);
-		global[1] = l[0];
-		global[2] = l[1];
-		printf("%s: ", global[0]);
-		printf("%s ", global[1]);
-		printf("%s\n", global[2]);
-		printf("lines: %i\n", line);
+		//sel_opcode();
 		free(l[0]);
 		free(l[1]);
 		if (l[2][0] != '0')
