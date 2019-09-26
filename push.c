@@ -10,6 +10,7 @@ void push(stack_t **stack, unsigned int line_number)
 	int i = 0, number;
 
 	for (; global[1][i] != '\0'; i++)
+	{
 		if (isdigit(global[1][i]) == 0)
 		{
 			free_stack(stack);
@@ -20,6 +21,7 @@ void push(stack_t **stack, unsigned int line_number)
 			fprintf(stderr, "L%u: usage: push integer\n", line_number);
 			exit(EXIT_FAILURE);
 		}
+	}
 	number = atoi(global[1]);
 	new = (stack_t *)malloc(sizeof(stack_t));
 	if (new == NULL)
