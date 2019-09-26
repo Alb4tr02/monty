@@ -9,16 +9,16 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new;
 	int i = 0, number;
 
-	for (; global[1][i] != '\0'; i++)
-		if (isdigit(num[i] == 0))
+	for (; global[2][i] != '\0'; i++)
+		if (isdigit(global[2][i] == 0))
 			break;
-	if (isdigit(num[i] == 0) || num == NULL)
+	if (isdigit(global[2][i] == 0) || global[2] == NULL)
 	{
-		fprintf(stderr, "L%u: usage: push integer\n", line);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	number = atoi(global[1]);
-	new = malloc(stack_t);
+	number = atoi(global[2]);
+	new = malloc(sizeof(stack_t *));
 	if (new == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed");
@@ -29,7 +29,6 @@ void push(stack_t **stack, unsigned int line_number)
 	if (stack == NULL)
 		new->prev = NULL;
 	else
-		new->prev = stack;
-	stack = new;
-	return (stack);
+		new->prev = *stack;
+	*stack = new;
 }

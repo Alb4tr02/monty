@@ -6,7 +6,7 @@
  * @line: line of instructions
  * Return: Retunr the funtion
  */
-int *sel_opcode(stack_t **stack, unsigned int line)
+int sel_opcode(stack_t **stack, unsigned int line)
 {
 	instruction_t op[] = {
 		{ "push", push }, { "pall", pall}, { "pop", pop },
@@ -18,15 +18,15 @@ int *sel_opcode(stack_t **stack, unsigned int line)
 	};
 	int i = 0;
 
-	if (stack == NULL || opcode == NULL)
+	if (stack == NULL || global[1] == NULL)
 		return (0);
 	while (op[i].opcode != NULL)
 	{
-		if (strcmp(global, op[i].opcode) == 0)
+		if (strcmp(global[1], op[i].opcode) == 0)
 		{
 			op[i].f(stack, line);
 			break;
 		}
 	}
-	return (0);
+	return(0);
 }
