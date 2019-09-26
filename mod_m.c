@@ -12,12 +12,22 @@ void mod_m(stack_t **stack, unsigned int line_number)
 	l = stack_len(stack);
 	if (l < 2)
 	{
+		free_stack(stack);
+		free(global[0]);
+		free(global[1]);
+		free(global[2]);
+		free(global);
 		fprintf(stderr, "L%u: can't mod, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	f = *stack;
 	if (f->n == 0)
 	{
+		free_stack(stack);
+		free(global[0]);
+		free(global[1]);
+		free(global[2]);
+		free(global);
 		fprintf(stderr, "L%u:division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}

@@ -8,6 +8,11 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
 	{
+		free_stack(stack);
+		free(global[0]);
+		free(global[1]);
+		free(global[2]);
+		free(global);
 		fprintf(stderr, "L%u: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}

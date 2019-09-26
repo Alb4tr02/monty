@@ -6,29 +6,33 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {
-	stack_t *new;
+	stack_t *new, *p;
 	int i = 0, number;
 
-	for (; global[2][i] != '\0'; i++)
-		if (isdigit(global[2][i] == 0))
-			break;
-	if (isdigit(global[2][i] == 0) || global[2][0] == 0)
-	{
-		fprintf(stderr, "L%u: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	number = atoi(global[2]);
+	for (; global[1][i] != '\0'; i++)
+		if (isdigit(global[1][i]) == 0)
+		{
+			free_stack(stack);
+			free(global[0]);
+			free(global[1]);
+			free(global[2]);
+			free(global);
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			exit(EXIT_FAILURE);
+		}
+	number = atoi(global[1]);
 	new = (stack_t *)malloc(sizeof(stack_t));
 	if (new == NULL)
-		error_malloc();
-	if (new)
+		error_malloc(stack);
+	new->n = number;
+	new->next = NULL;
+	if (*stack == NULL)
+		new->prev = NULL;
+	else
 	{
-		new->n = number;
-		new->next = NULL;
-		if (stack == NULL)
-			new->prev = NULL;
-		else
-			new->prev = *stack;
+		new->prev = *stack;
+		p = *stack;
+		p->next = new;
 	}
 	*stack = new;
 }

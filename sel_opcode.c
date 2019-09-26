@@ -21,7 +21,7 @@ int sel_opcode(stack_t **stack, unsigned int line)
 		return (0);
 	for (; op[i].opcode != NULL; i++)
 	{
-		if (strcmp(global[1], op[i].opcode) == 0)
+		if (strcmp(global[0], op[i].opcode) == 0)
 		{
 			op[i].f(stack, line);
 			break;
