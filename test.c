@@ -49,6 +49,8 @@ int main(int argc, char *argv[])
 	char **l = NULL;
 	char *fname = NULL;
 	char **global = NULL;
+	stack_t *st = NULL;
+	stack_t **stack = &st;
 
 	global = (char **)malloc(sizeof(char **) * 3);
 	fname = argv[1];
@@ -63,7 +65,9 @@ int main(int argc, char *argv[])
 	{
 		line++;
 		l = _getopc(fd);
-		//sel_opcode();
+		global[1] = l[0];
+		global[2] = l[1];
+		sel_opcode(stack, line);
 		free(l[0]);
 		free(l[1]);
 		if (l[2][0] != '0')
