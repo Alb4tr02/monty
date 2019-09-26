@@ -1,5 +1,6 @@
 #include "monty.h"
-void pchar(stack_t **stack, unsigned int line_number)
+void _pchar(stack_t **stack, unsigned int line_number)
 {
+	int i  = 0;
 	return;
 }
