@@ -1,5 +1,4 @@
 #include "monty.h"
-
 /**
  * sel_opcode - Select the opcode to use.
  * @stack: type pointer node of data struct
@@ -20,7 +19,7 @@ int sel_opcode(stack_t **stack, unsigned int line)
 
 	if (stack == NULL || global[1] == NULL)
 		return (0);
-	while (op[i].opcode != NULL)
+	for (; op[i].opcode != NULL; i++)
 	{
 		if (strcmp(global[1], op[i].opcode) == 0)
 		{

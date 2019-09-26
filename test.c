@@ -42,13 +42,13 @@ char **_getopc(int fd)
 	}
 	return (l);
 }
+char **global = NULL;
 int main(int argc, char *argv[])
 {
 	int fd = 0;
 	unsigned int line = 0;
 	char **l = NULL;
 	char *fname = NULL;
-	char **global = NULL;
 	stack_t *st = NULL;
 	stack_t **stack = &st;
 
