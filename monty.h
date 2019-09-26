@@ -55,5 +55,6 @@ void mod_m(stack_t **stack, unsigned int line_number);
 void pstr_t(stack_t **stack, unsigned int line_number);
 int stack_len(stack_t **stack);
 void error_malloc(void);
+void free_stack(stack_t **head);
 
 #endif

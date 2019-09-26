@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
 		free(l[2]);
 		free(l);
 	}
+	free_stack(stack);
 	free(global);
 	close(fd);
 	return (0);

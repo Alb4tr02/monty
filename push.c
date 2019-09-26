@@ -18,15 +18,17 @@ void push(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	number = atoi(global[2]);
-	new = malloc(sizeof(stack_t *));
+	new = (stack_t *)malloc(sizeof(stack_t));
 	if (new == NULL)
 		error_malloc();
-	new->n = number;
 	if (new)
+	{
+		new->n = number;
 		new->next = NULL;
-	if (stack == NULL)
-		new->prev = NULL;
-	else
-		new->prev = *stack;
+		if (stack == NULL)
+			new->prev = NULL;
+		else
+			new->prev = *stack;
+	}
 	*stack = new;
 }
