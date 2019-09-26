@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 		free(l);
 	}
 	free(global);
-	printf("lines: %i\n", line);
+	//printf("lines: %i\n", line);
 	close(fd);
 	//clfy_opc(opc);
 	return (0);
