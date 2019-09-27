@@ -7,7 +7,6 @@
  */
 int sel_opcode(stack_t **stack, unsigned int line)
 {
-	int found = 0;
 	unsigned int l =  line;
 	instruction_t op[] = {
 		{ "push", push }, { "pall", pall}, { "pop", pop },
@@ -25,12 +24,11 @@ int sel_opcode(stack_t **stack, unsigned int line)
 	{
 		if (strcmp(global[0], op[i].opcode) == 0)
 		{
-			found = 1;
 			op[i].f(stack, line);
 			break;
 		}
 	}
-	if (!found)
+	if (op[i].opcode == NULL && global[0][0] != 0)
 	{
 		fprintf(stderr, "L%u: unknown instruction %s\n", l, global[0]);
 		free(global[0]);
