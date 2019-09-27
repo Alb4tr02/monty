@@ -13,8 +13,12 @@ int main(int argc, char *argv[])
 	char *fname = NULL;
 	stack_t *st = NULL;
 	stack_t **stack = &st;
-	(void)argc;
 
+	if (argc == 1 || argc > 2)
+	{
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 	fname = argv[1];
 	fd = open(fname, O_RDONLY);
 	if (fd == -1)
