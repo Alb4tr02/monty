@@ -13,8 +13,13 @@ int main(int argc, char *argv[])
 	char *fname = NULL;
 	stack_t *st = NULL;
 	stack_t **stack = &st;
-	(void)argc;
 
+	if (argv[1] == NULL || argc > 2)
+	{
+		free_stack(stack);
+		fprintf(stderr, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
+	}
 	fname = argv[1];
 	fd = open(fname, O_RDONLY);
 	if (fd == -1)
@@ -27,8 +32,7 @@ int main(int argc, char *argv[])
 		line++;
 		global = _getopc(fd, stack);
 		sel_opcode(stack, line);
-		free(global[0]);
-		free(global[1]);
+		free(global[0]), free(global[1]);
 		if (global[2][0] != '0')
 		{
 			free(global[2]);
