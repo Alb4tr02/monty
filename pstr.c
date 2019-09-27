@@ -21,7 +21,7 @@ void pstr_t(stack_t **stack, unsigned int line_number)
 	}
 	while (p != NULL)
 	{
-		if (p->n < 1 || p->n > 255)
+		if (p->n < 1 || p->n > 127)
 			break;
 		putchar(p->n);
 		p = p->prev;
