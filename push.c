@@ -9,6 +9,8 @@ void push(stack_t **stack, unsigned int line_number)
 	stack_t *new, *p;
 	int i = 0, number;
 
+	if (global[1][0] == 0)
+		global[1][0] = 'a';
 	for (; global[1][i] != '\0'; i++)
 	{
 		if (isdigit(global[1][i]) == 0)
