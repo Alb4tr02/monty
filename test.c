@@ -1,11 +1,13 @@
 #include "monty.h"
+
+char **global = NULL;
+
 /**
  * main - process Monty languaje
  * @argc: number of arguments
  * @argv: array of arguments
- * Returns: 0 on success
+ * Return: 0 on success
  */
-char **global = NULL;
 int main(int argc, char *argv[])
 {
 	int fd = 0;

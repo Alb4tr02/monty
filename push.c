@@ -11,6 +11,8 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (global[1][0] == 0)
 		global[1][0] = 'a';
+	if (global[1][0] == '-')
+		i++;
 	for (; global[1][i] != '\0'; i++)
 	{
 		if (isdigit(global[1][i]) == 0)
