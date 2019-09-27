@@ -2,6 +2,9 @@
 /**
  * error_malloc - prints the error when malloc fails
  * @stack: a double linked list
+ * @opc: for free
+ * @arg: for free
+ * @end: for free
  */
 void error_malloc(stack_t **stack, char *opc, char *arg, char *end)
 {
