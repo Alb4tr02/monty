@@ -23,7 +23,7 @@ void pstr_t(stack_t **stack, unsigned int line_number)
 	{
 		if (p->n < 1 || p->n > 127)
 			break;
-		putchar(p->n);
+		printf("%c", (char)(p->n));
 		p = p->prev;
 	}
 	putchar('\n');
