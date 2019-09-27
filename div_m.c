@@ -28,7 +28,7 @@ void div_m(stack_t **stack, unsigned int line_number)
 		free(global[1]);
 		free(global[2]);
 		free(global);
-		fprintf(stderr, "L%u:division by zero\n", line_number);
+		fprintf(stderr, "L%u: division by zero\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	s = f->prev;
