@@ -19,7 +19,7 @@ void _pchar(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%u: can't pchar, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	if (p->n < 0 || p->n > 255)
+	if (p->n < 0 || p->n > 127)
 	{
 		free_stack(stack);
 		free(global[0]);
