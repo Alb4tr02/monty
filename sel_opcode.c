@@ -30,8 +30,7 @@ int sel_opcode(stack_t **stack, unsigned int line)
 	}
 	if (op[i].opcode == NULL && global[0][0] != 0)
 	{
-
- 		fprintf(stderr, "L%u: unknown instruction %s\n", l, global[0]);
+		fprintf(stderr, "L%u: unknown instruction %s\n", l, global[0]);
 		free_stack(stack);
 		free(global[0]);
 		free(global[1]);
