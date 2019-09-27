@@ -7,7 +7,7 @@
  */
 char **_getopc(int fd, stack_t **stack)
 {
-	int i = 0, size = 100, fl = 1, inw = 0, cont = 0;
+	int i = 0, size = 100, fl = 1, inw = 0, cont = 0, com = 1;
 	char *opc = NULL, *arg = NULL, *end = NULL;
 	char c = 0;
 
@@ -33,16 +33,15 @@ char **_getopc(int fd, stack_t **stack)
 		{
 			i = -1;
 			if (inw)
-			{
-				inw = 0;
-				cont++;
-			}
+				inw = 0, cont++;
 		}
 		else
 			inw = 1;
-		if (inw && cont == 0)
+		if (inw && cont == 0 && c == '#' && i == 0)
+			com = 0;
+		if (inw && cont == 0 && com)
 			opc[i] = c;
-		if (inw && cont == 1)
+		if (inw && cont == 1 && com)
 			arg[i] = c;
 	}
 	return (global);
