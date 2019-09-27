@@ -56,5 +56,7 @@ void pstr_t(stack_t **stack, unsigned int line_number);
 int stack_len(stack_t **stack);
 void error_malloc(stack_t **stack, char *opc, char *arg, char *end);
 void free_stack(stack_t **head);
+void rotl(stack_t **stack, unsigned int line_number);
+void rotr(stack_t **stack, unsigned int line_number);
 
 #endif
