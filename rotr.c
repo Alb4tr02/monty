@@ -11,6 +11,8 @@ void rotr(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL)
 		return;
+	if ((*stack)->prev == NULL)
+		return;
 	do {
 		p = (*stack)->prev;
 		(*stack)->prev = (*stack)->next;

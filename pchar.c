@@ -9,7 +9,7 @@ void _pchar(stack_t **stack, unsigned int line_number)
 	stack_t *p;
 
 	p = *stack;
-	if (p == NULL)
+	if (stack == NULL || *stack == NULL)
 	{
 		free_stack(stack);
 		free(global[0]);
