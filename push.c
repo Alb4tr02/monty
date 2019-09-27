@@ -27,7 +27,7 @@ void push(stack_t **stack, unsigned int line_number)
 	number = atoi(global[1]);
 	new = (stack_t *)malloc(sizeof(stack_t));
 	if (new == NULL)
-		error_malloc(stack);
+		error_malloc(stack, NULL, NULL, NULL);
 	new->n = number;
 	new->next = NULL;
 	if (*stack == NULL)

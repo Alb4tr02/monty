@@ -16,7 +16,7 @@ char **_getopc(int fd, stack_t **stack)
 	end = malloc(1);
 	global = (char **)malloc(sizeof(char **) * 3);
 	if (opc == NULL || arg == NULL || end == NULL || global == NULL)
-		error_malloc(stack);
+		error_malloc(stack, opc, arg, end);
 	end[0] = '0';
 	for (; i < size; opc[i] = 0, arg[i] = 0, i++)
 		;
